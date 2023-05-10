@@ -8,10 +8,10 @@ namespace ariel{
 
     class Character{
 
-        protected:
-            Point location;
-            string name;
-            int hits;
+
+        Point location;
+        string name;
+        int hits;
 
         public:
             Character(string name, Point location);

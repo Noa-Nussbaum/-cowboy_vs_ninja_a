@@ -30,11 +30,18 @@ namespace ariel{
 
         OldNinja *Amusi = new OldNinja("Amusi", b);
         CHECK("Amusi"==Amusi->getName());
+
+        YoungNinja *Alina = new YoungNinja("Alina", Point(64,57));
+        TrainedNinja *Herut = new TrainedNinja("Herut", Point(12,81));
+
+        CHECK(Amusi->speed == 8);
+        CHECK(Alina->speed == 14);
+        CHECK(Herut->speed == 12);
     
     }
     
 
-    TEST_CASE("Team fight"){
+    TEST_CASE("Team fights"){
         Point a(1.3,4.5),b(1.3,3.5);
         Point c(64,57), d(12,81);
         Cowboy *Yvgeni = new Cowboy("Yvgeni", a);
@@ -54,6 +61,10 @@ namespace ariel{
         team_A.add(Alina);
         team_B.add(Herut);
 
+        CHECK(team_A.stillAlive()==2);
+        CHECK(team_B.stillAlive()==2);
+
+
         Yvgeni->shoot(Amusi);
         CHECK(Yvgeni->hasBoolets()==true);
 
@@ -62,13 +73,18 @@ namespace ariel{
         }
         CHECK(Yvgeni->hasBoolets()==false);
 
+        Yvgeni->reload();
+
+        CHECK(Yvgeni->hasBoolets()==true);
+
         Amusi->move(Yvgeni);
         Amusi->slash(Yvgeni);
 
-        while(team_A.stillAlive() > 0 && team_B.stillAlive() > 0){
+        while( team_B.stillAlive() > 0){
             team_A.attack(&team_B);
-            team_B.attack(&team_A);
         }
+
+        CHECK(team_B.stillAlive()==0);
 
     }
 

@@ -7,9 +7,9 @@ using namespace std;
 namespace ariel{
 
     class Ninja : public Character{
-        protected:
+
             int speed;
-            // int hits;
+            int hits;
         public:
             Ninja(string name, Point location);
             Ninja();

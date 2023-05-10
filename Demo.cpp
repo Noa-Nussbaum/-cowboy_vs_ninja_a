@@ -25,6 +25,8 @@ int main() {
     tom->shoot(sushi);
     cout << tom->print() <<endl;
 
+    cout << sushi->speed << endl;
+
     sushi->move(tom);
     sushi->slash(tom);
 
