@@ -17,6 +17,8 @@ class Point{
         double distance(Point other);
         void print();
         Point moveTowards(Point source, Point destination, double distance);
+        double getX();
+        double getY();
 
 
 

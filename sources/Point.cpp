@@ -21,5 +21,12 @@ namespace ariel{
     Point Point::moveTowards(Point source, Point destination, double distance){
         return Point();
     }
+    double Point::getX(){
+        return this->x;
+    }
+
+    double Point::getY(){
+        return this->y;
+    }
 
 }
