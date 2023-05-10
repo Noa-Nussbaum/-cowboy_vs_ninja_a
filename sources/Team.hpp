@@ -15,7 +15,6 @@ namespace ariel{
 
         public:
             Team(Character*leader);
-            // Team(){}
             Character leader;
             void add(Character* other);
             void attack(const Team* other);
