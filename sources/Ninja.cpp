@@ -1,14 +1,24 @@
-#pragma once
-#include "Character.hpp"
+#include "Ninja.hpp"
+
 
 using namespace std;
 
 namespace ariel{
 
-    class Ninja : public Character{
-        Ninja::Ninja(string name, Point location){}
-        Ninja::Ninja(){}
-        void Ninja::move(Character &other){}
-        void Ninja::slash(Character &other){}
-    };
+    Ninja::Ninja(string name, Point location) : Character(name, location){
+        // initialize any Ninja-specific member variables here
+    }
+
+    Ninja::Ninja(){
+        // initialize any Ninja-specific member variables here
+    }
+
+    void Ninja::move(Character* other){
+        // implementation of move function
+    }
+
+    void Ninja::slash(Character* other){
+        // implementation of slash function
+    }
 }
+

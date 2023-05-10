@@ -5,21 +5,18 @@ using namespace std;
 
 namespace ariel{
 
-    class Team{
+    Team::Team(Character* leader){}
+    // Team::Team(){}
+    void Team::add(Character* other){}
+    void Team::attack(const Team* other){}
+    bool Team::stillAlive(){
+        return true;
+    }
+    void Team::print(){}
 
-        Team::Team(Character leader){
-        }
-        Team::Team(){}
-        void Team::add(Character &other){}
-        void Team::attack(Team &other){}
-        int Team::stillAlive(){
-            return 10;
-        }
-        void Team::print(){}
-
-        Team::~Team(){          
-        }
+    Team::~Team(){          
+    }
 
 
-    };
+
 }

@@ -1,17 +1,14 @@
-#pragma once
-#include "Character.hpp"
-#include "Ninja.hpp"
+#include "TrainedNinja.hpp"
 
 using namespace std;
 
 namespace ariel{
 
-    class TrainedNinja : public Ninja{
 
-        TrainedNinja(string name, Point location){
-            this->speed = 12;
-            this->hits = 120;
-        }
+    TrainedNinja::TrainedNinja(const string name, Point location): Ninja(name, location){
+        this->speed = 12;
+        this->hits = 120;
+    }
 
-    };
+
 }

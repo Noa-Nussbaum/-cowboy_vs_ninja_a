@@ -1,17 +1,13 @@
-#pragma once
-#include "Character.hpp"
-#include "Ninja.hpp"
+#include "YoungNinja.hpp"
 
 using namespace std;
 
 namespace ariel{
 
-    class YoungNinja : public Ninja{
-
-        YoungNinja(string name, Point location){
+        YoungNinja::YoungNinja(const string name, Point location): Ninja(name, location){
             this->speed = 14;
             this->hits = 100;
         }
 
-    };
+
 }

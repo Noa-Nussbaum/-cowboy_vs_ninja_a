@@ -8,20 +8,21 @@ namespace ariel{
 
     class Character{
 
-        private:
+        protected:
             Point location;
             string name;
+            int hits;
 
         public:
-            Character(Point location, int hits, string name);
+            Character(string name, Point location);
             Character();
             bool isAlive();
             double distance(Character &other);
             void hit(int hits);
             string getName();
             Point getLocation();
-            void print();
-            int hits;
+            string print();
+            
 
     };
 }

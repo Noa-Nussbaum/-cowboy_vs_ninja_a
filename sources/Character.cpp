@@ -2,12 +2,11 @@
 
 namespace ariel{
 
-    Character::Character(Point location, int hits, string name){
+    Character::Character(string name, Point location){
         this->location = location;
-        this->hits = hits;
         this->name = name;
     }
-    Character::Character(): location(Point()), hits(0), name("Noa"){}
+    Character::Character(): name("Noa"), location(Point()){}
 
     bool Character::isAlive(){
         return true;
@@ -24,8 +23,8 @@ namespace ariel{
     Point Character::getLocation(){
         return this->location;
     }
-    void Character::print(){
-        
+    string Character::print(){
+        return "Noa";
     }
 
 

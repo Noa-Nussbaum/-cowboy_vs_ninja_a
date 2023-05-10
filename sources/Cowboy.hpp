@@ -1,5 +1,6 @@
 #pragma once
 #include "Character.hpp"
+#include "Ninja.hpp"
 
 using namespace std;
 
@@ -10,7 +11,7 @@ namespace ariel{
 
     public:
         Cowboy(string name, Point location);
-        void shoot(Character &other);
+        void shoot(Character* other);
         bool hasBoolets();
         void reload();
 
