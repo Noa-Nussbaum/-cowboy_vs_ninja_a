@@ -1,5 +1,6 @@
 #pragma once
 #include <stdio.h>
+#include "Point.hpp"
 #include "Character.hpp"
 #include "Cowboy.hpp"
 #include "Ninja.hpp"

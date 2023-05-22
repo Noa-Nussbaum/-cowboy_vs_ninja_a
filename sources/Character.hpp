@@ -8,20 +8,28 @@ namespace ariel{
 
     class Character{
 
-
+        private:
         Point location;
         string name;
         int hits;
 
         public:
-            Character(string name, Point location);
+            Character(string name,int hits,Point location);
+            Character(Character &other);
             Character();
-            bool isAlive();
-            double distance(Character &other);
+            int getHits() const;
+            void setLocation(Point other);
+            Point getLocation() const;
+            bool isAlive() const;
+            double distance(const Character* other) const;
             void hit(int hits);
+            bool operator==(const Character& other) const;
+            Character& operator==(Character&& other) ;
+            Character& operator=(const Character& other);   
             string getName();
             Point getLocation();
-            string print();
+            virtual string print();
+            virtual ~Character() = default;
             
 
     };

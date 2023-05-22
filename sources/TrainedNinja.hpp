@@ -6,10 +6,12 @@ using namespace std;
 namespace ariel{
 
     class TrainedNinja : public Ninja {
+        
     public:
-        int speed; 
-        int hits;
-        TrainedNinja(string name, Point location);
+
+        TrainedNinja(const string &name,const Point &location);
+        TrainedNinja(TrainedNinja& other);
+
 };
 
 }

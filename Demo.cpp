@@ -19,6 +19,7 @@ using namespace ariel;
 
 int main() {
     Point a(32.3,44),b(1.3,3.5);
+    
     assert(a.distance(b) == b.distance(a));
     Cowboy *tom = new Cowboy("Tom", a);
     OldNinja *sushi = new OldNinja("sushi", b);

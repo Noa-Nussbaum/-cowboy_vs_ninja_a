@@ -4,10 +4,9 @@ using namespace std;
 
 namespace ariel{
 
-    OldNinja::OldNinja(string name, Point location) : Ninja(name, location) {
-        this->speed = 8;
-        this->hits = 150;
-    }
+    OldNinja::OldNinja(const string &name,const Point &location): Ninja(name, 150, location,8){}
+    OldNinja::OldNinja(OldNinja& other): Ninja(other){}
+
 
 }
 

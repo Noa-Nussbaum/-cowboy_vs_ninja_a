@@ -4,10 +4,9 @@ using namespace std;
 
 namespace ariel{
 
-        YoungNinja::YoungNinja(const string name, Point location): Ninja(name, location){
-            this->speed = 14;
-            this->hits = 100;
-        }
+        
+        YoungNinja::YoungNinja(const string &name,const Point &location): Ninja(name, 100, location,14){}
+        YoungNinja::YoungNinja(YoungNinja& other): Ninja(other){}
 
 
 }

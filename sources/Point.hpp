@@ -14,11 +14,13 @@ class Point{
     public:
         Point(const double& x, const double& y);
         Point();
-        double distance(Point other);
+        double distance(const Point& other)const;
         void print();
-        Point moveTowards(Point source, Point destination, double distance);
+        string printString();
+        static Point moveTowards(Point source, Point destination, double distance);
         double getX();
         double getY();
+        bool operator==(const Point& other) const;
 
 
 

@@ -1,19 +1,21 @@
 #pragma once
 #include "Character.hpp"
-#include "Ninja.hpp"
 
 using namespace std;
 
 namespace ariel{
 
     class Cowboy : public Character{
+    private:
         int bullets;
 
     public:
-        Cowboy(string name, Point location);
+        Cowboy(const string &name, const Point &location);
+        Cowboy(Cowboy& other);
         void shoot(Character* other);
-        bool hasBoolets();
+        bool hasboolets();
         void reload();
+        string print();
 
 };
 }
