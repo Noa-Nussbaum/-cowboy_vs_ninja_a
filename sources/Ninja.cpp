@@ -25,6 +25,7 @@ namespace ariel{
     void Ninja::move(Character* other){
         if(other->isAlive()){
             setLocation(getLocation().moveTowards(getLocation(),other->getLocation(),speed));
+            cout << "did move work?" <<endl;
         }
     }
 

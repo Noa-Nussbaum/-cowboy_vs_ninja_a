@@ -24,28 +24,20 @@ int main() {
     Cowboy *tom = new Cowboy("Tom", a);
     OldNinja *sushi = new OldNinja("sushi", b);
     YoungNinja *young=new YoungNinja("Yogi", Point(64,57));
-   //  cout <<"is alive :" << young->isAlive() <<endl;
     
     tom->shoot(sushi);
-   //  cout << sushi->speed << endl;
-    sushi->move(tom);
-   //  cout << tom->getHits() <<endl;
-   //  sushi->slash(tom);
-   //  cout << tom->getHits() <<endl;
 
-
-   cout << sushi->getHits() <<endl;
-    tom->shoot(sushi);
-    cout << sushi->getHits() <<endl;
-   cout <<"is alive :" << sushi->isAlive() <<endl;
-
+   sushi->move(tom);
+   cout << "did it crash" <<endl;
+   tom->shoot(sushi);
+   cout << "did it crash" <<endl;
+    
 
     Team team_A(tom); 
     team_A.add(new YoungNinja("Yogi", Point(64,57)));
    //  cout << "This many are alive:"<<team_A.stillAlive() << endl;
     
    //  team_A.print();
-
 
     // Team b(tom); should throw tom is already in team a
 

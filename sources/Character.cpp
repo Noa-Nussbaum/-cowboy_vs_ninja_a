@@ -17,8 +17,8 @@ namespace ariel{
     double Character::distance(const Character* other) const{
         return other->distance(this);
     }
-    void Character::hit(int hits){
-        this->hits =-hits;
+    void Character::hit(int number){
+        this->hits -=number;
     }
     string Character::getName(){
         return this->name;
