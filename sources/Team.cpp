@@ -1,5 +1,7 @@
 #include "Team.hpp"
 #include "Character.hpp"
+#include <iostream>
+#include <limits>
 
 
 using namespace std;
@@ -30,8 +32,31 @@ namespace ariel{
             }
         }
     }
+    void Team::setLeader(Character* newLeader){
+        this->leader = newLeader;
+    }
+
     void Team::attack(const Team* other){
-        
+        if(other == nullptr){
+            throw invalid_argument("Enemy is null");
+        }
+        if(other->stillAlive()==0){
+            throw runtime_error("Enemy is all dead");
+        }
+        if(!leader->isAlive()){
+            double closest = numeric_limits<double>::infinity();
+            int position = -1;
+            for(int i=0; i<team.size(); i++){
+                if(team.at(i)==leader){
+                    continue;
+                }
+                if(team.at(i)->distance(leader)<closest){
+                    closest = team.at(i)->distance(leader);
+                    position = i;
+                }
+            }
+            leader=team.at(position);
+        }
     }
 
     int Team::stillAlive() const{

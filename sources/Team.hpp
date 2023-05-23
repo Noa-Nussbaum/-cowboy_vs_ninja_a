@@ -27,6 +27,7 @@ namespace ariel{
             int stillAlive() const;
             void print();
             ~Team();
+            void setLeader(Character* newLeader);
 
     };
 
