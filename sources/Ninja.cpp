@@ -41,5 +41,9 @@ namespace ariel{
     int Ninja::getSpeed() const{
         return speed;
     }
+
+    int Ninja::type() const{
+        return 2;
+    }
 }
 

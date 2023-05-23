@@ -6,10 +6,10 @@ namespace ariel{
     //     this->location = location;
     //     this->name = name;
     // }
-    Character::Character(string name,int hits,Point location):name(name),location(location),hits(hits){
-    }
-    Character::Character(): name("Noa"), location(Point()){}
-    Character::Character(Character &other) : name(other.name), location(other.location), hits(other.hits) {
+    
+    Character::Character(string name,int hits,Point location):name(name),location(location),hits(hits),inTeam(0){}
+    Character::Character(): name("Noa"), location(Point()),inTeam(0){}
+    Character::Character(Character &other) : name(other.name), location(other.location), hits(other.hits), inTeam(0) {
 }
 
 
@@ -41,7 +41,12 @@ namespace ariel{
     Point Character::getLocation() const{
         return location;
     }
-    
+    void Character::setInTeam(){
+        this->inTeam=1;
+    }
+    int Character::getInTeam(){
+        return inTeam;
+    }
 
 
 };

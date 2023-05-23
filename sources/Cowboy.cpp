@@ -30,6 +30,10 @@ namespace ariel{
 
     }
 
+    int Cowboy::type() const{
+        return 1;
+    }
+
 
 
 }

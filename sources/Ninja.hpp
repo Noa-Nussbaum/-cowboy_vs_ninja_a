@@ -9,6 +9,7 @@ namespace ariel{
     class Ninja : public Character{
         private:
             int speed;
+            int type() const;
             
         public:
             Ninja();
@@ -18,5 +19,6 @@ namespace ariel{
             int getSpeed() const;
             void move(Character* other);
             void slash(Character* other);
+            
     };  
 }

@@ -7,6 +7,8 @@
 #include "OldNinja.hpp"
 #include "YoungNinja.hpp"
 #include "TrainedNinja.hpp"
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -14,12 +16,15 @@ namespace ariel{
 
     class Team{
 
+        private:
+            Character* leader;
+            vector<Character*> team;
+
         public:
-            Team(Character*leader);
-            Character leader;
+            Team(Character* leader);
             void add(Character* other);
             void attack(const Team* other);
-            bool stillAlive();
+            int stillAlive() const;
             void print();
             ~Team();
 

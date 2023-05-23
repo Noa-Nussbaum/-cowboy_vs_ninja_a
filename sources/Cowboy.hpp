@@ -8,6 +8,7 @@ namespace ariel{
     class Cowboy : public Character{
     private:
         int bullets;
+        int type() const;
 
     public:
         Cowboy(const string &name, const Point &location);
@@ -16,6 +17,8 @@ namespace ariel{
         bool hasboolets();
         void reload();
         string print();
+        
+        
 
 };
 }
