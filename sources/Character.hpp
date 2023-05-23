@@ -13,6 +13,7 @@ namespace ariel{
         string name;
         int hits;
         int inTeam;
+        int type;
 
         public:
             Character(string name,int hits,Point location);
@@ -31,9 +32,11 @@ namespace ariel{
             Point getLocation();
             virtual string print();
             virtual ~Character() = default;
-            int type() const;
+            int getType();
+            void setType(int number);
             void setInTeam();
             int getInTeam();
+            
             
 
     };

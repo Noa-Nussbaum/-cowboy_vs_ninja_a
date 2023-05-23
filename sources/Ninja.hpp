@@ -9,7 +9,6 @@ namespace ariel{
     class Ninja : public Character{
         private:
             int speed;
-            int type() const;
             
         public:
             Ninja();

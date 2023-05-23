@@ -5,9 +5,13 @@ using namespace std;
 namespace ariel{
 
 
-    Cowboy::Cowboy(const string &name, const Point &location):Character(name, 110,location),bullets(6){}
+    Cowboy::Cowboy(const string &name, const Point &location):Character(name, 110,location),bullets(6){
+        setType(1);
+    }
     
-    Cowboy::Cowboy(Cowboy& other):Character(other), bullets(other.bullets){}
+    Cowboy::Cowboy(Cowboy& other):Character(other), bullets(other.bullets){
+        setType(1);
+    }
     
     void Cowboy::shoot( Character* other){
         if(this->isAlive() && this->bullets>0){
@@ -30,9 +34,7 @@ namespace ariel{
 
     }
 
-    int Cowboy::type() const{
-        return 1;
-    }
+   
 
 
 

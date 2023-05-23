@@ -14,9 +14,13 @@ namespace ariel{
     //     // initialize any Ninja-specific member variables here
     // }
 
-    Ninja::Ninja(const string &name, int hits,const Point &location, int speed):Character(name,hits,location), speed(speed){}
+    Ninja::Ninja(const string &name, int hits,const Point &location, int speed):Character(name,hits,location), speed(speed){
+        setType(2);
+    }
     
-    Ninja::Ninja(Ninja& other):Character(other), speed(other.speed){}
+    Ninja::Ninja(Ninja& other):Character(other), speed(other.speed){
+        setType(2);
+    }
 
     void Ninja::move(Character* other){
         if(other->isAlive()){
@@ -42,8 +46,7 @@ namespace ariel{
         return speed;
     }
 
-    int Ninja::type() const{
-        return 2;
-    }
+    
+
 }
 

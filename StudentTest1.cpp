@@ -139,139 +139,139 @@ TEST_SUITE("Classes initialization tests and Team modification( add(),stillAlive
         CHECK(trained_ninja.isAlive());
     }
 
-//     TEST_CASE("Team initialization") {
-//         auto cowboy = create_cowboy(2, 3);
-//         auto ninja = create_yninja(2, 3);
-//         Team team{cowboy};
-//         CHECK_EQ(team.stillAlive(), 1);
+    TEST_CASE("Team initialization") {
+        auto cowboy = create_cowboy(2, 3);
+        auto ninja = create_yninja(2, 3);
+        Team team{cowboy};
+        CHECK_EQ(team.stillAlive(), 1);
 
-//         Team2 team2{ninja};
-//         CHECK_EQ(team2.stillAlive(), 1);
-//     }
+        Team2 team2{ninja};
+        CHECK_EQ(team2.stillAlive(), 1);
+    }
 
-//     TEST_CASE("Team class add() and stillAlive() methods") {
-//         auto captain1 = create_oninja();
-//         auto captain2 = create_yninja();
+    TEST_CASE("Team class add() and stillAlive() methods") {
+        auto captain1 = create_oninja();
+        auto captain2 = create_yninja();
 
-//         Team team1{captain1};
-//         Team2 team2{captain2};
+        Team team1{captain1};
+        Team2 team2{captain2};
 
-//         // Every addition should rise the value returned by stillAlive()
-//         for (int i = 0; i < MAX_TEAM - 1; i++) {
-//             auto cur1 = create_tninja();
-//             auto cur2 = create_cowboy();
-//             team1.add(cur1);
-//             team2.add(cur2);
-//             CHECK_EQ(team1.stillAlive(), i + 2);
-//             CHECK_EQ(team2.stillAlive(), i + 2);
-//         }
+        // Every addition should rise the value returned by stillAlive()
+        for (int i = 0; i < MAX_TEAM - 1; i++) {
+            auto cur1 = create_tninja();
+            auto cur2 = create_cowboy();
+            team1.add(cur1);
+            team2.add(cur2);
+            CHECK_EQ(team1.stillAlive(), i + 2);
+            CHECK_EQ(team2.stillAlive(), i + 2);
+        }
 
-//         // A team can have at most 10 teammates
-//         auto over = create_cowboy();
-//         CHECK_THROWS_AS(team1.add(over),std::runtime_error);
-//         CHECK_THROWS_AS(team2.add(over),std::runtime_error);
-//         delete over;
-//     }
+        // A team can have at most 10 teammates
+        auto over = create_cowboy();
+        CHECK_THROWS_AS(team1.add(over),std::runtime_error);
+        CHECK_THROWS_AS(team2.add(over),std::runtime_error);
+        delete over;
+    }
 
-//     TEST_CASE("Appointing the same captain to different teams") {
-//         auto captain = create_cowboy();
-//         auto captain2 = create_yninja();
+    TEST_CASE("Appointing the same captain to different teams") {
+        auto captain = create_cowboy();
+        auto captain2 = create_yninja();
 
-//         Team team1{captain};
-//         CHECK_THROWS_AS(Team{captain},std::runtime_error);
-//         CHECK_THROWS_AS(Team2{captain},std::runtime_error);
+        Team team1{captain};
+        CHECK_THROWS_AS(Team{captain},std::runtime_error);
+        CHECK_THROWS_AS(Team2{captain},std::runtime_error);
 
-//         Team team2{captain2};
-//         CHECK_THROWS_AS(Team{captain2},std::runtime_error);
-//         CHECK_THROWS_AS(Team2{captain2},std::runtime_error);
-//     }
+        Team team2{captain2};
+        CHECK_THROWS_AS(Team{captain2},std::runtime_error);
+        CHECK_THROWS_AS(Team2{captain2},std::runtime_error);
+    }
 
-//     TEST_CASE("Adding the same character to different teams") {
-//         auto captain1 = create_tninja();
-//         auto captain2 = create_oninja();
-//         auto captain3 = create_yninja();
+    TEST_CASE("Adding the same character to different teams") {
+        auto captain1 = create_tninja();
+        auto captain2 = create_oninja();
+        auto captain3 = create_yninja();
 
-//         Team team1{captain1};
-//         Team team2{captain2};
-//         Team2 team3{captain3};
+        Team team1{captain1};
+        Team team2{captain2};
+        Team2 team3{captain3};
 
-//         auto teammate1 = create_cowboy();
-//         auto teammate2 = create_oninja();
+        auto teammate1 = create_cowboy();
+        auto teammate2 = create_oninja();
 
-//         team1.add(teammate1);
-//         team1.add(teammate2);
+        team1.add(teammate1);
+        team1.add(teammate2);
 
-//         CHECK_THROWS_AS(team2.add(teammate1),std::runtime_error);
-//         CHECK_THROWS_AS(team3.add(teammate1),std::runtime_error);
-//         CHECK_THROWS_AS(team2.add(teammate2),std::runtime_error);
-//         CHECK_THROWS_AS(team3.add(teammate2),std::runtime_error);
-//     }
+        CHECK_THROWS_AS(team2.add(teammate1),std::runtime_error);
+        CHECK_THROWS_AS(team3.add(teammate1),std::runtime_error);
+        CHECK_THROWS_AS(team2.add(teammate2),std::runtime_error);
+        CHECK_THROWS_AS(team3.add(teammate2),std::runtime_error);
+    }
 }
 
 
-// TEST_SUITE("Battle related methods") {
+TEST_SUITE("Battle related methods") {
 
-//     TEST_CASE("Cowboy shoot() and reload() methods") {
-//         auto cowboy = create_cowboy();
-//         auto target = create_oninja();
+    // TEST_CASE("Cowboy shoot() and reload() methods") {
+    //     auto cowboy = create_cowboy();
+    //     auto target = create_oninja();
 
-//         auto shoot = [&](int times) {
-//             for (int i = 0; i < times; i++) {
-//                 cowboy->shoot(target);
-//             }
-//         };
+    //     auto shoot = [&](int times) {
+    //         for (int i = 0; i < times; i++) {
+    //             cowboy->shoot(target);
+    //         }
+    //     };
 
-//         shoot(6);
-//         CHECK_FALSE(cowboy->hasboolets());
-//         CHECK_NOTHROW(cowboy->shoot(target)); // This should not damage the target
-//         cowboy->reload();
+    //     shoot(6);
+    //     CHECK_FALSE(cowboy->hasboolets());
+    //     CHECK_NOTHROW(cowboy->shoot(target)); // This should not damage the target
+    //     cowboy->reload();
 
-//         shoot(2);
-//         cowboy->reload();
-//         shoot(6);
-//         CHECK(target->isAlive()); // Target should still be alive with 10 hit points if the cowboys damage is 10
-//         shoot(1);
-//         CHECK(target->isAlive()); // Reloading when the magazine isn't empty shouldn't result in more than 6 bullets, the previous shoot should have no effect
-//         cowboy->reload();
-//         shoot(1);
-//         CHECK_FALSE(target->isAlive()); // Target should be dead
-//         delete cowboy;
-//         delete target;
-//     }
+    //     shoot(2);
+    //     cowboy->reload();
+    //     shoot(6);
+    //     CHECK(target->isAlive()); // Target should still be alive with 10 hit points if the cowboys damage is 10
+    //     shoot(1);
+    //     CHECK(target->isAlive()); // Reloading when the magazine isn't empty shouldn't result in more than 6 bullets, the previous shoot should have no effect
+    //     cowboy->reload();
+    //     shoot(1);
+    //     CHECK_FALSE(target->isAlive()); // Target should be dead
+    //     delete cowboy;
+    //     delete target;
+    // }
 
 
-//     TEST_CASE("Ninjas hit points are different") {
-//         auto old = create_oninja();
-//         auto trained = create_tninja();
-//         auto young = create_yninja();
-//         auto cowboy = create_cowboy();
-//         for (int i = 0; i < 15; i++) {
-//             cowboy->reload();
+    TEST_CASE("Ninjas hit points are different") {
+        auto old = create_oninja();
+        auto trained = create_tninja();
+        auto young = create_yninja();
+        auto cowboy = create_cowboy();
+        for (int i = 0; i < 15; i++) {
+            cowboy->reload();
 
-//             // After 10 shots, young should die
-//             if (i < 10) {
-//                 CHECK(young->isAlive());
-//                 cowboy->shoot(young);
-//             }
+            // After 10 shots, young should die
+            if (i < 10) {
+                CHECK(young->isAlive());
+                cowboy->shoot(young);
+            }
 
-//             // After 12 shots, trained should die
-//             if (i < 12) {
-//                 CHECK(trained->isAlive());
-//                 cowboy->shoot(trained);
-//             }
+            // After 12 shots, trained should die
+            if (i < 12) {
+                CHECK(trained->isAlive());
+                cowboy->shoot(trained);
+            }
 
-//             // Old should only die on the last iteration of the for loop
-//             CHECK(old->isAlive());
-//             cowboy->shoot(old);
-//         }
+            // Old should only die on the last iteration of the for loop
+            CHECK(old->isAlive());
+            cowboy->shoot(old);
+        }
 
-//         CHECK_FALSE((old->isAlive() || young->isAlive() || trained->isAlive()));
+        CHECK_FALSE((old->isAlive() || young->isAlive() || trained->isAlive()));
 
-//         delete old ;
-//         delete trained ;
-//         delete young ;
-//         delete cowboy ;
-//     }
+        delete old ;
+        delete trained ;
+        delete young ;
+        delete cowboy ;
+    }
 
 //     TEST_CASE("Ninjas speeds are different") {
 //         OldNinja old{"Bob", Point{random_float(0) + 15, random_float(0) + 15}};
@@ -429,7 +429,7 @@ TEST_SUITE("Classes initialization tests and Team modification( add(),stillAlive
 //         delete oninja;
 //         delete tninja;
 //     }
-// }
+}
 
 // TEST_SUITE("Battle simulations") {
 

@@ -2,19 +2,17 @@
 
 namespace ariel{
 
-    // Character::Character(string name, Point location){
-    //     this->location = location;
-    //     this->name = name;
-    // }
-    
     Character::Character(string name,int hits,Point location):name(name),location(location),hits(hits),inTeam(0){}
-    Character::Character(): name("Noa"), location(Point()),inTeam(0){}
-    Character::Character(Character &other) : name(other.name), location(other.location), hits(other.hits), inTeam(0) {
-}
-
+    Character::Character(): name("Noa"), location(Point()),inTeam(0),hits(0){
+        inTeam=0;
+    }
+    Character::Character(Character &other) : name(other.name), location(other.location), hits(other.hits), inTeam(0) {}
 
     bool Character::isAlive() const{
-        return hits>0;
+        if(hits>0){
+            return true;
+        }
+        return false;
     }
     double Character::distance(const Character* other) const{
         return other->distance(this);
@@ -46,6 +44,14 @@ namespace ariel{
     }
     int Character::getInTeam(){
         return inTeam;
+    }
+
+    int Character::getType(){
+        return type;
+    }
+
+    void Character::setType(int number){
+        this->type=number;
     }
 
 

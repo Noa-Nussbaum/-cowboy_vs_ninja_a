@@ -28,6 +28,7 @@ namespace ariel{
             void print();
             ~Team();
             void setLeader(Character* newLeader);
+            Character* findVictim(const Team* other);
 
     };
 

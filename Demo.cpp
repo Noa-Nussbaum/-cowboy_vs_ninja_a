@@ -23,21 +23,35 @@ int main() {
     assert(a.distance(b) == b.distance(a));
     Cowboy *tom = new Cowboy("Tom", a);
     OldNinja *sushi = new OldNinja("sushi", b);
+    YoungNinja *young=new YoungNinja("Yogi", Point(64,57));
+   //  cout <<"is alive :" << young->isAlive() <<endl;
+    
     tom->shoot(sushi);
-    cout << tom->print() <<endl;
-
-    cout << sushi->speed << endl;
-
+   //  cout << sushi->speed << endl;
     sushi->move(tom);
-    sushi->slash(tom);
+   //  cout << tom->getHits() <<endl;
+   //  sushi->slash(tom);
+   //  cout << tom->getHits() <<endl;
+
+
+   cout << sushi->getHits() <<endl;
+    tom->shoot(sushi);
+    cout << sushi->getHits() <<endl;
+   cout <<"is alive :" << sushi->isAlive() <<endl;
+
 
     Team team_A(tom); 
     team_A.add(new YoungNinja("Yogi", Point(64,57)));
+   //  cout << "This many are alive:"<<team_A.stillAlive() << endl;
+    
+   //  team_A.print();
+
 
     // Team b(tom); should throw tom is already in team a
 
      Team team_B(sushi);
      team_B.add(new TrainedNinja("Hikari", Point(12,81)));
+
 
 
      while(team_A.stillAlive() > 0 && team_B.stillAlive() > 0){
