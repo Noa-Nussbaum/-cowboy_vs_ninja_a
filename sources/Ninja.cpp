@@ -25,11 +25,13 @@ namespace ariel{
     void Ninja::move(Character* other){
         if(other->isAlive()){
             setLocation(getLocation().moveTowards(getLocation(),other->getLocation(),speed));
-            cout << "did move work?" <<endl;
         }
     }
 
     void Ninja::slash(Character* other){
+        if(other==this){
+            throw runtime_error("Self harm is not allowed here. Go see a therapist");
+        }
         double distance = this->distance(other);
         if(this->isAlive() && distance <1){
             other->hit(31);

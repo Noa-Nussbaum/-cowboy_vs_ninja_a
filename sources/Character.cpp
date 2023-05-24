@@ -15,9 +15,12 @@ namespace ariel{
         return false;
     }
     double Character::distance(const Character* other) const{
-        return other->distance(this);
+        return other->getLocation().distance(this->getLocation());
     }
     void Character::hit(int number){
+        if(number<0){
+            throw invalid_argument("Negative number of hits");
+        }
         this->hits -=number;
     }
     string Character::getName(){

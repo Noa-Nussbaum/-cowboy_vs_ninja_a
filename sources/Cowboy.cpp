@@ -14,6 +14,9 @@ namespace ariel{
     }
     
     void Cowboy::shoot( Character* other){
+        if(other==this){
+            throw runtime_error("Self harm is not allowed here. Go see a therapist");
+        }
         if(this->isAlive() && this->bullets>0){
             other->hit(10);
             this->bullets-=1;
@@ -24,6 +27,9 @@ namespace ariel{
         return this->bullets>0;
     }
     void Cowboy::reload(){
+        if(!isAlive()){
+            throw runtime_error("Can't reload as cowboy is dead");
+        }
         this->bullets=6;
     }
     string Cowboy::print(){

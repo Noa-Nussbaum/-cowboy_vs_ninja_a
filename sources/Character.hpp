@@ -25,9 +25,9 @@ namespace ariel{
             bool isAlive() const;
             double distance(const Character* other) const;
             void hit(int hits);
-            bool operator==(const Character& other) const;
             Character& operator==(Character&& other) ;
-            Character& operator=(const Character& other);   
+            Character& operator=(const Character& other);
+            bool operator==(const Character& other) const;
             string getName();
             Point getLocation();
             virtual string print();
