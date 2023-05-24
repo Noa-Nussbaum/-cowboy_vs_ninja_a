@@ -12,6 +12,7 @@ namespace ariel{
             throw std::runtime_error("Team leader already a different team leader");
         }
         leader->setInTeam();
+        // this->add(leader);
         team.push_back(leader);
     }
 
@@ -75,6 +76,7 @@ namespace ariel{
     }
 
     void Team::attack( Team* other){
+        
         if (other == nullptr){
             throw invalid_argument("Enemy is null");
         }
@@ -143,6 +145,7 @@ namespace ariel{
     }
 
     int Team::stillAlive() {
+    
         int answer = 0;
         // for (std::vector<Character*>::size_type i = 0; i < team.size(); i++){
         //     if (team.at(i)->isAlive()){
@@ -168,5 +171,14 @@ namespace ariel{
             delete *member;
         }
     }
+
+    int Team::teamSize(){
+        return team.size();
+    }
+   
+    vector<Character *> &Team::getTeam() {
+        return team;
+    }
+
 
 }

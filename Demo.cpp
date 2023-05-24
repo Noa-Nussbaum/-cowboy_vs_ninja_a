@@ -43,7 +43,7 @@ int main() {
     Team team_A(tom); 
     // team_A.add(new YoungNinja("Yogi", Point(64,57)));
     // team_A.add(young);
-    cout << "still alive" << team_A.stillAlive()<<endl;
+    // cout << "still alive" << team_A.stillAlive()<<endl;
     Team2 team_C(sushi); 
     team_C.add(new YoungNinja("Yogi", Point(64,57)));
     team_C.add(young);

@@ -23,14 +23,16 @@ namespace ariel{
         public:
             Team(Character* leader);
             virtual void add(Character* other);
-            void attack( Team* other);
+            virtual void attack( Team* other);
             int stillAlive() ;
             void print();
-            ~Team();
+            virtual ~Team();
             void setLeader(Character* newLeader);
             // Character* findVictim(const Team* other);
             Character* findVictim(const Character* leader) const ;
             static bool compare(Character *one, Character *two);
+            int teamSize();
+            vector<Character *> &getTeam();
 
     };
 

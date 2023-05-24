@@ -10,11 +10,23 @@ namespace ariel{
 
     Team2::Team2(Character* leader):Team(leader){
     }
+    // void Team2::add(Character *character) {
+    //     if (team.size()< 10 && !character->getInTeam()) {
+    //         // team.insert(character);
+    //         team.push_back(character);
+    //         // this->setCapacity(this->getCapacity()+1);
+    //         cout <<"adding to team" <<endl;
+    //     } else if (team.size() == 10) {
+    //         throw std::runtime_error("Team is full");
+    //     } else {
+    //         throw std::runtime_error("Character already belong to a team");
+    //     }
+    // }
     void Team2::add(Character* other){
         if(other->getInTeam()){
             throw runtime_error("Character was already in team");
         }
-        else if(team.size()<10){
+        else if(teamSize()<10){
                 // If cowboy insert at front
                 // if(other->getType()==1){
                 //     team.insert(team.begin(), other);
@@ -22,7 +34,8 @@ namespace ariel{
                 // }
                 // // If ninja insert at end
                 // else if(other->getType()==2){
-                team.push_back(other);
+                
+                getTeam().push_back(other);
                 
                 // }
                 other->setInTeam();
@@ -31,6 +44,8 @@ namespace ariel{
                 throw runtime_error("There's already 10 team members");
             }
     }
+
+
     // void Team2::setLeader(Character* newLeader){
     //     this->leader = newLeader;
     // }

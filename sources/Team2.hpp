@@ -18,12 +18,12 @@ namespace ariel{
     class Team2 : public Team{
 
         private:
-            Character* leader;
-            vector<Character*> team;
+            // Character* leader;
+            // vector<Character*> team;
 
         public:
             Team2(Character* leader);
-            void add(Character* other);
+            void add(Character* other) override;
             // void attack(const Team2* other);
             // int stillAlive() const;
             // void print();
