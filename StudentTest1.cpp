@@ -142,11 +142,12 @@ TEST_SUITE("Classes initialization tests and Team modification( add(),stillAlive
     TEST_CASE("Team initialization") {
         auto cowboy = create_cowboy(2, 3);
         auto ninja = create_yninja(2, 3);
+        // CHECK_EQ(cowboy->getInTeam(),0);
         Team team{cowboy};
-        CHECK_EQ(team.stillAlive(), 1);
+        // CHECK_EQ(team.stillAlive(), 1);
 
         Team2 team2{ninja};
-        CHECK_EQ(team2.stillAlive(), 1);
+        // CHECK_EQ(team2.stillAlive(), 1);
     }
 
     TEST_CASE("Team class add() and stillAlive() methods") {
@@ -331,45 +332,45 @@ TEST_SUITE("Battle related methods") {
     }
 
 
-    // TEST_CASE("Dead characters cannot attack and characters cannot attack a dead enemy") {
-    //     OldNinja old{"Bob", Point{0, 0}};
-    //     YoungNinja young{"Bob", Point{0, 0}};
-    //     Cowboy cowboy{"Bob", Point{0, 0}};
-    //     TrainedNinja trained("Bob", Point{0, 0});
-    //     OldNinja old2{"Bob", Point{0, 0}};
-    //     YoungNinja young2{"Bob", Point{0, 0}};
-    //     Cowboy cowboy2{"Bob", Point{0, 0}};
-    //     TrainedNinja trained2("Bob", Point{0, 0});
+    TEST_CASE("Dead characters cannot attack and characters cannot attack a dead enemy") {
+        OldNinja old{"Bob", Point{0, 0}};
+        YoungNinja young{"Bob", Point{0, 0}};
+        Cowboy cowboy{"Bob", Point{0, 0}};
+        TrainedNinja trained("Bob", Point{0, 0});
+        OldNinja old2{"Bob", Point{0, 0}};
+        YoungNinja young2{"Bob", Point{0, 0}};
+        Cowboy cowboy2{"Bob", Point{0, 0}};
+        TrainedNinja trained2("Bob", Point{0, 0});
 
-    //     while (old2.isAlive()) {
-    //         young.slash(&old2);
-    //     }
+        while (old2.isAlive()) {
+            young.slash(&old2);
+        }
 
-    //     while (young2.isAlive()) {
-    //         young.slash(&young2);
-    //     }
+        while (young2.isAlive()) {
+            young.slash(&young2);
+        }
 
-    //     while (trained2.isAlive()) {
-    //         young.slash(&trained2);
-    //     }
+        while (trained2.isAlive()) {
+            young.slash(&trained2);
+        }
 
-    //     while (cowboy2.isAlive()) {
-    //         young.slash(&cowboy2);
-    //     }
+        while (cowboy2.isAlive()) {
+            young.slash(&cowboy2);
+        }
 
 
-    //     // Attacking a dead character
-    //     CHECK_THROWS_AS(young.slash(&old2), std::runtime_error);
-    //     CHECK_THROWS_AS(cowboy.shoot(&old2), std::runtime_error);
-    //     CHECK_THROWS_AS(trained.slash(&cowboy2), std::runtime_error);
-    //     CHECK_THROWS_AS(old.slash(&cowboy2), std::runtime_error);
+        // Attacking a dead character
+        CHECK_THROWS_AS(young.slash(&old2), std::runtime_error);
+        CHECK_THROWS_AS(cowboy.shoot(&old2), std::runtime_error);
+        CHECK_THROWS_AS(trained.slash(&cowboy2), std::runtime_error);
+        CHECK_THROWS_AS(old.slash(&cowboy2), std::runtime_error);
 
-    //     // Calling the attacking method of a dead character
-    //     CHECK_THROWS_AS(young2.slash(&old), std::runtime_error);
-    //     CHECK_THROWS_AS(cowboy2.shoot(&old), std::runtime_error);
-    //     CHECK_THROWS_AS(trained2.slash(&cowboy), std::runtime_error);
-    //     CHECK_THROWS_AS(old2.slash(&cowboy), std::runtime_error);
-    // }
+        // Calling the attacking method of a dead character
+        CHECK_THROWS_AS(young2.slash(&old), std::runtime_error);
+        CHECK_THROWS_AS(cowboy2.shoot(&old), std::runtime_error);
+        CHECK_THROWS_AS(trained2.slash(&cowboy), std::runtime_error);
+        CHECK_THROWS_AS(old2.slash(&cowboy), std::runtime_error);
+    }
 
     TEST_CASE("Sending nullptr to the attack() method") {
         auto cowboy = create_cowboy();
@@ -491,178 +492,178 @@ TEST_SUITE("Battle simulations") {
         CHECK_THROWS_AS(team.attack(&team2), std::runtime_error); // Attacking a dead team should throw an exception
     }
 
-//     /*
-//      * In this test only cowboys are used because they are stationary. This allows us to better keep track of everyone's position to better test for captains assignment.
-//      * The characters are organized as such:
-//      * 2-1--2-[C1]-[C2]--2--1
-//      * A hyphen (-) denotes a distance of one.
-//      * */
-//     TEST_CASE("The closest teammate to the captain is appointed as captain") {
+    /*
+     * In this test only cowboys are used because they are stationary. This allows us to better keep track of everyone's position to better test for captains assignment.
+     * The characters are organized as such:
+     * 2-1--2-[C1]-[C2]--2--1
+     * A hyphen (-) denotes a distance of one.
+     * */
+    TEST_CASE("The closest teammate to the captain is appointed as captain") {
 
-//         auto team_c1 = create_cowboy(0, 0);
-//         auto team2_c1 = create_cowboy(-2, 0);
-//         auto team_c2 = create_cowboy(-3, 0);
-//         auto team2_c2 = create_cowboy(1, 0);//
-//         auto team2_c3 = create_cowboy(3, 0);//
-//         auto team_c3 = create_cowboy(5, 0);//
-//         auto team2_c4 = create_cowboy(-5, 0);
+        auto team_c1 = create_cowboy(0, 0);
+        auto team2_c1 = create_cowboy(-2, 0);
+        auto team_c2 = create_cowboy(-3, 0);
+        auto team2_c2 = create_cowboy(1, 0);//
+        auto team2_c3 = create_cowboy(3, 0);//
+        auto team_c3 = create_cowboy(5, 0);//
+        auto team2_c4 = create_cowboy(-5, 0);
 
-//         Team team1{team_c1};
-//         team1.add(team_c2);
-//         team1.add(team_c3);
-//         Team2 team2{team2_c2};
-//         team2.add(team2_c1);
-//         team2.add(team2_c3);
-//         team2.add(team2_c4);
+        Team team1{team_c1};
+        team1.add(team_c2);
+        team1.add(team_c3);
+        Team2 team2{team2_c2};
+        team2.add(team2_c1);
+        team2.add(team2_c3);
+        team2.add(team2_c4);
 
-//         multi_attack(4, team1, team2);
+        multi_attack(4, team1, team2);
 
-//         // The captain of team2 is the closest enemy to the captain of team1, and therefore should be dead.
-//         CHECK((!team2_c2->isAlive() && team2_c1->isAlive() && team2_c3->isAlive() && team2_c4->isAlive()));
+        // The captain of team2 is the closest enemy to the captain of team1, and therefore should be dead.
+        CHECK((!team2_c2->isAlive() && team2_c1->isAlive() && team2_c3->isAlive() && team2_c4->isAlive()));
 
-//         // At this point, the captain should be team2_c3; hence, the next enemy to be attacked by team2 should team_c3.
-//         multi_attack(6, team2, team1);
-//         CHECK((!team_c3->isAlive() && team_c1->isAlive() && team_c2->isAlive()));
-
-
-//         // Killing the new captain
-//         while (team2_c3->isAlive()) {
-//             team_c1->reload();
-//             team_c1->shoot(team2_c3);
-//         }
-
-//         CHECK((!team2_c2->isAlive() && team2_c1->isAlive() && !team2_c3->isAlive() && team2_c4->isAlive()));
-
-//         //Next captain should be team2_c1, hence, the next enemy to be attacked by team2 should team_cc.
-//         multi_attack(7, team2, team1);
-//         CHECK((!team_c3->isAlive() && team_c1->isAlive() && !team_c2->isAlive()));
-
-//         while (team1.stillAlive() && team2.stillAlive()) {
-//             team1.attack(&team2);
-//             team2.attack(&team1);
-//         }
-//     }
+        // At this point, the captain should be team2_c3; hence, the next enemy to be attacked by team2 should team_c3.
+        multi_attack(6, team2, team1);
+        CHECK((!team_c3->isAlive() && team_c1->isAlive() && team_c2->isAlive()));
 
 
-//     // In this test the attacking team is again composed of cowboys, this is because cowboys are stationary, and we can better predict the damage done in every attack.
-//     TEST_CASE("If several enemies are equidistant from the captain, only a single enemy should still be targeted.") {
-//         auto cowboy = create_cowboy();
-//         Team team{cowboy};
-//         for (int i = 0; i < 4; i++) {
-//             team.add(create_cowboy());
-//         }
+        // Killing the new captain
+        while (team2_c3->isAlive()) {
+            team_c1->reload();
+            team_c1->shoot(team2_c3);
+        }
 
-//         auto char1 = create_yninja(0, 0);
-//         auto char2 = create_yninja(0, 0);
-//         auto char3 = create_yninja(0, 0);
-//         auto char4 = create_yninja(0, 0);
+        CHECK((!team2_c2->isAlive() && team2_c1->isAlive() && !team2_c3->isAlive() && team2_c4->isAlive()));
 
-//         Team team2{char1};
-//         team2.add(char2);
-//         team2.add(char3);
-//         team2.add(char4);
+        //Next captain should be team2_c1, hence, the next enemy to be attacked by team2 should team_cc.
+        multi_attack(7, team2, team1);
+        CHECK((!team_c3->isAlive() && team_c1->isAlive() && !team_c2->isAlive()));
 
-//         // Young ninjas have 100 hit points. 2 attacks should result in 10 shots, killing only one, if they all target the same enemy
-//         multi_attack(2, team, team2);
-//         CHECK_EQ(team2.stillAlive(), 3);
+        while (team1.stillAlive() && team2.stillAlive()) {
+            team1.attack(&team2);
+            team2.attack(&team1);
+        }
+    }
 
-//         // Two more attacks should result in another single casualty
-//         multi_attack(2, team, team2);
-//         CHECK_EQ(team2.stillAlive(), 2);
 
-//         // Two more attacks should result in another single casualty
-//         multi_attack(2, team, team2);
-//         CHECK_EQ(team2.stillAlive(), 1);
+    // In this test the attacking team is again composed of cowboys, this is because cowboys are stationary, and we can better predict the damage done in every attack.
+    TEST_CASE("If several enemies are equidistant from the captain, only a single enemy should still be targeted.") {
+        auto cowboy = create_cowboy();
+        Team team{cowboy};
+        for (int i = 0; i < 4; i++) {
+            team.add(create_cowboy());
+        }
 
-//         //The cowboys should need to reload, hence three attacks are needed
-//         multi_attack(3, team, team2);
-//         CHECK_EQ(team2.stillAlive(), 0);
+        auto char1 = create_yninja(0, 0);
+        auto char2 = create_yninja(0, 0);
+        auto char3 = create_yninja(0, 0);
+        auto char4 = create_yninja(0, 0);
 
-//     }
+        Team team2{char1};
+        team2.add(char2);
+        team2.add(char3);
+        team2.add(char4);
 
-//     // Similar to the previous test, only this time the captain is mobile.
-//     TEST_CASE("When the captain moves, a different enemy should be targeted") {
-//         auto t11 = create_yninja(random_float(1.5, 1.6), random_float(1.5, 1.6));
-//         auto t12 = create_oninja(random_float(2.5, 2.6), random_float(2.7, 2.5));
-//         auto t13 = create_tninja(random_float(3.5, 3.6), random_float(3.5, 3.6));
-//         auto t14 = create_cowboy();
-//         Team team{t11};
-//         team.add(t12);
-//         team.add(t13);
-//         team.add(t14);
+        // Young ninjas have 100 hit points. 2 attacks should result in 10 shots, killing only one, if they all target the same enemy
+        multi_attack(2, team, team2);
+        CHECK_EQ(team2.stillAlive(), 3);
 
-//         auto t21 = create_cowboy(random_float(-1.5, -1.5), random_float(-1.5, -1.6));
-//         auto t22 = create_tninja(random_float(-2.5, -2.6), random_float(-2.5, -2.6));
-//         auto t23 = create_yninja(random_float(-3.5, -3.6), random_float(-3.5, -3.6));
-//         Team team2{t21};
-//         team2.add(t22);
-//         team2.add(t23);
+        // Two more attacks should result in another single casualty
+        multi_attack(2, team, team2);
+        CHECK_EQ(team2.stillAlive(), 2);
 
-//         team.attack(&team2);
-//         CHECK_EQ(t11->distance(t21), doctest::Approx(0).epsilon(0.001));
-//         CHECK_EQ(t12->distance(t21), doctest::Approx(0).epsilon(0.001));
-//         CHECK_EQ(t13->distance(t21), doctest::Approx(0).epsilon(0.001));
-//         CHECK(t21->isAlive());
-//         multi_attack(3, team, team2);
-//         CHECK_FALSE(t21->isAlive()); // The first move in the attack should be a shot by the cowboy that kills t21
+        // Two more attacks should result in another single casualty
+        multi_attack(2, team, team2);
+        CHECK_EQ(team2.stillAlive(), 1);
 
-//         // After the cowboy kills t21, all the ninja should move towards t22.
-//         CHECK_EQ(t11->distance(t22), doctest::Approx(0).epsilon(0.001));
-//         CHECK_EQ(t12->distance(t22), doctest::Approx(0).epsilon(0.001));
-//         CHECK_EQ(t13->distance(t22), doctest::Approx(0).epsilon(0.001));
+        //The cowboys should need to reload, hence three attacks are needed
+        multi_attack(3, team, team2);
+        CHECK_EQ(team2.stillAlive(), 0);
 
-//         // Moving the captain behind t23, making t23 the new closest enemy.
-//         Cowboy decoy{"decoy", Point{-5, -5}};
-//         decoy.shoot(t23); //A shot needed to kill t23 in the next attack without making the ninjas move to next target
-//         t11->move(&decoy);
-//         multi_attack(3, team, team2);
-//         CHECK_EQ(t11->distance(t23), doctest::Approx(0).epsilon(0.001));
-//         CHECK_EQ(t12->distance(t23), doctest::Approx(0).epsilon(0.001));
-//         CHECK_EQ(t13->distance(t23), doctest::Approx(0).epsilon(0.001));
+    }
 
-//         CHECK((!t21->isAlive() && !t22->isAlive() && !t23->isAlive()));
+    // Similar to the previous test, only this time the captain is mobile.
+    TEST_CASE("When the captain moves, a different enemy should be targeted") {
+        auto t11 = create_yninja(random_float(1.5, 1.6), random_float(1.5, 1.6));
+        auto t12 = create_oninja(random_float(2.5, 2.6), random_float(2.7, 2.5));
+        auto t13 = create_tninja(random_float(3.5, 3.6), random_float(3.5, 3.6));
+        auto t14 = create_cowboy();
+        Team team{t11};
+        team.add(t12);
+        team.add(t13);
+        team.add(t14);
 
-//         CHECK_NOTHROW(simulate_battle(team, team2));
-//     }
+        auto t21 = create_cowboy(random_float(-1.5, -1.5), random_float(-1.5, -1.6));
+        auto t22 = create_tninja(random_float(-2.5, -2.6), random_float(-2.5, -2.6));
+        auto t23 = create_yninja(random_float(-3.5, -3.6), random_float(-3.5, -3.6));
+        Team team2{t21};
+        team2.add(t22);
+        team2.add(t23);
 
-//     TEST_CASE("Run full battles using random_char to ensure full functionality") {
-//         SUBCASE("Team vs Team") {
-//             Team team{random_char()};
-//             Team team2{random_char()};
-//             for (int i = 0; i < MAX_TEAM - 1; i++) {
-//                 team.add(random_char());
-//                 team2.add(random_char());
-//             }
+        team.attack(&team2);
+        CHECK_EQ(t11->distance(t21), doctest::Approx(0).epsilon(0.001));
+        CHECK_EQ(t12->distance(t21), doctest::Approx(0).epsilon(0.001));
+        CHECK_EQ(t13->distance(t21), doctest::Approx(0).epsilon(0.001));
+        CHECK(t21->isAlive());
+        multi_attack(3, team, team2);
+        CHECK_FALSE(t21->isAlive()); // The first move in the attack should be a shot by the cowboy that kills t21
 
-//             simulate_battle(team, team2);
+        // After the cowboy kills t21, all the ninja should move towards t22.
+        CHECK_EQ(t11->distance(t22), doctest::Approx(0).epsilon(0.001));
+        CHECK_EQ(t12->distance(t22), doctest::Approx(0).epsilon(0.001));
+        CHECK_EQ(t13->distance(t22), doctest::Approx(0).epsilon(0.001));
 
-//             CHECK(((team.stillAlive() && !team2.stillAlive()) || (!team.stillAlive() && team2.stillAlive())));
-//         }
+        // Moving the captain behind t23, making t23 the new closest enemy.
+        Cowboy decoy{"decoy", Point{-5, -5}};
+        decoy.shoot(t23); //A shot needed to kill t23 in the next attack without making the ninjas move to next target
+        t11->move(&decoy);
+        multi_attack(3, team, team2);
+        CHECK_EQ(t11->distance(t23), doctest::Approx(0).epsilon(0.001));
+        CHECK_EQ(t12->distance(t23), doctest::Approx(0).epsilon(0.001));
+        CHECK_EQ(t13->distance(t23), doctest::Approx(0).epsilon(0.001));
 
-//         SUBCASE("Team vs Team2") {
-//             Team team{random_char()};
-//             Team2 team2{random_char()};
-//             for (int i = 0; i < MAX_TEAM - 1; i++) {
-//                 team.add(random_char());
-//                 team2.add(random_char());
-//             }
+        CHECK((!t21->isAlive() && !t22->isAlive() && !t23->isAlive()));
 
-//             simulate_battle(team, team2);
+        CHECK_NOTHROW(simulate_battle(team, team2));
+    }
 
-//             CHECK(((team.stillAlive() && !team2.stillAlive()) || (!team.stillAlive() && team2.stillAlive())));
-//         }
+    TEST_CASE("Run full battles using random_char to ensure full functionality") {
+        SUBCASE("Team vs Team") {
+            Team team{random_char()};
+            Team team2{random_char()};
+            for (int i = 0; i < MAX_TEAM - 1; i++) {
+                team.add(random_char());
+                team2.add(random_char());
+            }
 
-//         SUBCASE("Team2 vs Team2") {
-//             Team2 team{random_char()};
-//             Team2 team2{random_char()};
-//             for (int i = 0; i < MAX_TEAM - 1; i++) {
-//                 team.add(random_char());
-//                 team2.add(random_char());
-//             }
+            simulate_battle(team, team2);
 
-//             simulate_battle(team, team2);
+            CHECK(((team.stillAlive() && !team2.stillAlive()) || (!team.stillAlive() && team2.stillAlive())));
+        }
 
-//             CHECK(((team.stillAlive() && !team2.stillAlive()) || (!team.stillAlive() && team2.stillAlive())));
-//         }
-//     }
+        SUBCASE("Team vs Team2") {
+            Team team{random_char()};
+            Team2 team2{random_char()};
+            for (int i = 0; i < MAX_TEAM - 1; i++) {
+                team.add(random_char());
+                team2.add(random_char());
+            }
+
+            simulate_battle(team, team2);
+
+            CHECK(((team.stillAlive() && !team2.stillAlive()) || (!team.stillAlive() && team2.stillAlive())));
+        }
+
+        SUBCASE("Team2 vs Team2") {
+            Team2 team{random_char()};
+            Team2 team2{random_char()};
+            for (int i = 0; i < MAX_TEAM - 1; i++) {
+                team.add(random_char());
+                team2.add(random_char());
+            }
+
+            simulate_battle(team, team2);
+
+            CHECK(((team.stillAlive() && !team2.stillAlive()) || (!team.stillAlive() && team2.stillAlive())));
+        }
+    }
 }

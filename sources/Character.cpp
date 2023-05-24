@@ -3,9 +3,9 @@
 namespace ariel{
 
     Character::Character(string name,int hits,Point location):name(name),location(location),hits(hits),inTeam(0){}
-    Character::Character(): name("Noa"), location(Point()),inTeam(0),hits(0){
-        inTeam=0;
-    }
+    // Character::Character(): name("Noa"), location(Point()),inTeam(0),hits(0){
+    //     inTeam=0;
+    // }
     Character::Character(Character &other) : name(other.name), location(other.location), hits(other.hits), inTeam(0) {}
 
     bool Character::isAlive() const{

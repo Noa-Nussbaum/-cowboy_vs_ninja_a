@@ -9,11 +9,14 @@ namespace ariel{
         setType(1);
     }
     
-    Cowboy::Cowboy(Cowboy& other):Character(other), bullets(other.bullets){
-        setType(1);
-    }
+    // Cowboy::Cowboy(Cowboy& other):Character(other), bullets(other.bullets){
+    //     setType(1);
+    // }
     
     void Cowboy::shoot( Character* other){
+        if(!this->isAlive() || !other->isAlive()){
+            throw runtime_error("Attacker/ attacked is already dead");
+        }
         if(other==this){
             throw runtime_error("Self harm is not allowed here. Go see a therapist");
         }

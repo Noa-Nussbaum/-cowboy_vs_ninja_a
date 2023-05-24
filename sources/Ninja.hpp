@@ -11,9 +11,9 @@ namespace ariel{
             int speed;
             
         public:
-            Ninja();
+            // Ninja();
             Ninja(const string &name, int hits,const Point &location, int speed);
-            Ninja(Ninja& other);
+            // Ninja(Ninja& other);
             string print();
             int getSpeed() const;
             void move(Character* other);

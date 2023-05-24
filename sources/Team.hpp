@@ -22,14 +22,15 @@ namespace ariel{
 
         public:
             Team(Character* leader);
-            void add(Character* other);
-            void attack(const Team* other);
-            int stillAlive() const;
+            virtual void add(Character* other);
+            void attack( Team* other);
+            int stillAlive() ;
             void print();
             ~Team();
             void setLeader(Character* newLeader);
             // Character* findVictim(const Team* other);
-            Character* findClosestEnemy(const Character* attacker) const ;
+            Character* findVictim(const Character* leader) const ;
+            static bool compare(Character *one, Character *two);
 
     };
 

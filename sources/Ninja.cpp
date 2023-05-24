@@ -16,11 +16,12 @@ namespace ariel{
 
     Ninja::Ninja(const string &name, int hits,const Point &location, int speed):Character(name,hits,location), speed(speed){
         setType(2);
+        
     }
     
-    Ninja::Ninja(Ninja& other):Character(other), speed(other.speed){
-        setType(2);
-    }
+    // Ninja::Ninja(Ninja& other):Character(other), speed(other.speed){
+    //     setType(2);
+    // }
 
     void Ninja::move(Character* other){
         if(other->isAlive()){
@@ -29,12 +30,15 @@ namespace ariel{
     }
 
     void Ninja::slash(Character* other){
+        if(!this->isAlive() || !other->isAlive()){
+            throw runtime_error("Attacker/ attacked is already dead");
+        }
         if(other==this){
             throw runtime_error("Self harm is not allowed here. Go see a therapist");
         }
         double distance = this->distance(other);
         if(this->isAlive() && distance <1){
-            other->hit(31);
+            other->hit(40);
         }
     }
 
