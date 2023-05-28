@@ -440,6 +440,7 @@ TEST_SUITE("Battle simulations") {
                 attacker.attack(&defender);
             }
         }
+
     };
 
     TEST_CASE("Characters attack the closest enemy to the captain and ignore dead enemies ") {
@@ -516,7 +517,10 @@ TEST_SUITE("Battle simulations") {
         team2.add(team2_c3);
         team2.add(team2_c4);
 
+        
+
         multi_attack(4, team1, team2);
+        
 
         // The captain of team2 is the closest enemy to the captain of team1, and therefore should be dead.
         CHECK((!team2_c2->isAlive() && team2_c1->isAlive() && team2_c3->isAlive() && team2_c4->isAlive()));

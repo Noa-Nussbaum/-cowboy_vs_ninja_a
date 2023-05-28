@@ -75,12 +75,10 @@ namespace ariel{
         return victim;
     }
 
-    void Team::attack( Team* other){
-        
+    void Team::attack(Team* other){
         if (other == nullptr){
             throw invalid_argument("Enemy is null");
         }
-        cout << "other still alive" <<other->stillAlive() << endl;
         if (other->stillAlive() == 0){
             throw runtime_error("Enemy team is all dead");
         }
@@ -89,27 +87,43 @@ namespace ariel{
         // }
         // If team leader is dead - replace them
         if (!leader->isAlive()){
-            double closest = numeric_limits<double>::infinity();
-            std::vector<Character*>::size_type position = std::numeric_limits<std::vector<Character*>::size_type>::max();
-            for (std::vector<Character*>::size_type i = 0; i < team.size(); i++){
-                if (team.at(i) == leader){
-                    continue;
-                }
-                if (team.at(i)->distance(leader) < closest && team.at(i)->isAlive()){
-                    closest = team.at(i)->distance(leader);
-                    position = i;
-                }
-            }
-            if (position != std::numeric_limits<std::vector<Character*>::size_type>::max()){
-                leader = team.at(position);
-            }
+            // double closest = numeric_limits<double>::infinity();
+            // std::vector<Character*>::size_type position = std::numeric_limits<std::vector<Character*>::size_type>::max();
+            // for (std::vector<Character*>::size_type i = 0; i < team.size(); i++){
+            //     if (team.at(i) == leader || !team.at(i)->isAlive()){
+            //         continue;
+            //     }
+            //     if (team.at(i)->distance(leader) < closest && team.at(i)->isAlive()){
+            //         closest = team.at(i)->distance(leader);
+            //         position = i;
+            //     }
+            // }
+            // if (position != std::numeric_limits<std::vector<Character*>::size_type>::max()){
+            //     leader = team.at(position);
+            // }
+            
+            leader = this->findVictim(this->leader);
+            if(leader == nullptr){
+                return;
+        }
+            
         }
         // Character* victim = findVictim(other);
         Character* victim = other->findVictim(leader);
+        if(victim == nullptr){
+            return;
+        }
 
         // All attack victim
         for (std::vector<Character*>::size_type i = 0; i < team.size(); i++){
             if (team.at(i)->isAlive()){
+                if (!victim->isAlive()){
+                    // victim = findVictim(other);
+                    victim = other->findVictim(leader);
+                    if (victim == nullptr){
+                        return;
+                    }
+                }
                 if (team.at(i)->getType() == 1){
                     Cowboy* cowboy = dynamic_cast<Cowboy*>(team.at(i));
                     if (cowboy != nullptr){
@@ -130,14 +144,6 @@ namespace ariel{
                         else{
                             ninja->move(victim);
                         }
-                    }
-                }
-                if (!victim->isAlive()){
-                    // victim = findVictim(other);
-                    victim = other->findVictim(leader);
-
-                    if (victim == nullptr){
-                        break;
                     }
                 }
             }
