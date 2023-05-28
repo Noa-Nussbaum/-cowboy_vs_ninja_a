@@ -21,12 +21,7 @@ namespace ariel{
         public:
             Team2(Character* leader);
             void add(Character* other) override;
-            // void attack(const Team2* other);
-            // int stillAlive() const;
-            // void print();
-            // ~Team2();
-            // void setLeader(Character* newLeader);
-            // Character* findVictim(const Team2* other);
+
 
     };
 

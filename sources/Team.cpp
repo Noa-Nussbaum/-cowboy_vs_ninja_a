@@ -13,7 +13,6 @@ namespace ariel{
         }
         this->leader = leader;
         leader->setInTeam();
-        // this->add(leader);
         team.push_back(leader);
     }
 
@@ -40,27 +39,6 @@ namespace ariel{
         newLeader->setInTeam();
     }
 
-    // Character* Team::findVictim(const Team* other){
-    //     // Find victim
-    //     cout << "In 5" << endl;
-    //     double closest = numeric_limits<double>::infinity();
-    //     vector<Character*>::size_type position = numeric_limits<vector<Character*>::size_type>::max();
-    //     for (vector<Character*>::size_type i = 0; i < other->team.size(); i++){
-    //         cout << "In 9" << endl;
-    //         if (other->team.at(i)->distance(leader) < closest && other->team.at(i)->isAlive()){
-    //             closest = other->team.at(i)->distance(leader);
-    //             position = i;
-    //             cout << "In 8" << endl;
-    //         }
-    //     }
-    //     cout << "In 6" << endl;
-    //     if (position != numeric_limits<std::vector<Character*>::size_type>::max()){
-    //         return other->team.at(position);
-    //     }
-    //     cout << "In 7" << endl;
-    //     return nullptr;
-    // }
-
     Character* Team::findVictim(const Character* leader) const {
         double minDistance = std::numeric_limits<double>::max();
         Character* victim = nullptr;
@@ -84,25 +62,8 @@ namespace ariel{
         if (other->stillAlive() == 0){
             throw runtime_error("Enemy team is all dead");
         }
-        // if (this->stillAlive() == 0){
-        //     throw runtime_error("Team is all dead");
-        // }
         // If team leader is dead - replace them
         if (!leader->isAlive()){
-            // double closest = numeric_limits<double>::infinity();
-            // std::vector<Character*>::size_type position = std::numeric_limits<std::vector<Character*>::size_type>::max();
-            // for (std::vector<Character*>::size_type i = 0; i < team.size(); i++){
-            //     if (team.at(i) == leader || !team.at(i)->isAlive()){
-            //         continue;
-            //     }
-            //     if (team.at(i)->distance(leader) < closest && team.at(i)->isAlive()){
-            //         closest = team.at(i)->distance(leader);
-            //         position = i;
-            //     }
-            // }
-            // if (position != std::numeric_limits<std::vector<Character*>::size_type>::max()){
-            //     leader = team.at(position);
-            // }
             
             leader = this->findVictim(this->leader);
             if(leader == nullptr){
@@ -110,8 +71,7 @@ namespace ariel{
         }
             
         }
-        // Character* victim = findVictim(other);
-        
+
         Character* victim = other->findVictim(leader);
         if(victim == nullptr){
             return;
@@ -121,7 +81,6 @@ namespace ariel{
         for (std::vector<Character*>::size_type i = 0; i < team.size(); i++){
             if (team.at(i)->isAlive()){
                 if (!victim->isAlive()){
-                    // victim = findVictim(other);
                     victim = other->findVictim(leader);
                     if (victim == nullptr){
                         return;
@@ -156,11 +115,7 @@ namespace ariel{
     int Team::stillAlive() {
     
         int answer = 0;
-        // for (std::vector<Character*>::size_type i = 0; i < team.size(); i++){
-        //     if (team.at(i)->isAlive()){
-        //         answer++;
-        //     }
-        // }
+
         for (auto &i: this->team) {
             if (i->isAlive()) {
                 answer++;
