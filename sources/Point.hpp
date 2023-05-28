@@ -24,7 +24,7 @@ class Point{
 
 
 
-    private:
+    // private:
         double x;
         double y;
 

@@ -11,6 +11,7 @@ namespace ariel{
         if(leader->getInTeam()==1){
             throw std::runtime_error("Team leader already a different team leader");
         }
+        this->leader = leader;
         leader->setInTeam();
         // this->add(leader);
         team.push_back(leader);
@@ -76,8 +77,9 @@ namespace ariel{
     }
 
     void Team::attack(Team* other){
-        if (other == nullptr){
+        if (other == nullptr || leader == nullptr){
             throw invalid_argument("Enemy is null");
+            return;
         }
         if (other->stillAlive() == 0){
             throw runtime_error("Enemy team is all dead");
@@ -109,6 +111,7 @@ namespace ariel{
             
         }
         // Character* victim = findVictim(other);
+        
         Character* victim = other->findVictim(leader);
         if(victim == nullptr){
             return;
@@ -128,7 +131,7 @@ namespace ariel{
                     Cowboy* cowboy = dynamic_cast<Cowboy*>(team.at(i));
                     if (cowboy != nullptr){
                         if (cowboy->hasboolets()){
-                            cowboy->shoot(victim);
+                            cowboy->shoot(victim);                   
                         }
                         else{
                             cowboy->reload();
@@ -172,9 +175,11 @@ namespace ariel{
         }
     }
 
-    Team::~Team(){
-        for (std::vector<Character*>::iterator member = team.begin(); member != team.end(); member++){
-            delete *member;
+    
+    Team::~Team() {
+        //remove all the characters from the team
+        for (auto &i: this->team) {
+            delete i;
         }
     }
 

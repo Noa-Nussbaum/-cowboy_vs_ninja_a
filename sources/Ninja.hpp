@@ -7,7 +7,7 @@ using namespace std;
 namespace ariel{
 
     class Ninja : public Character{
-        private:
+        // private:
             int speed;
             
         public:

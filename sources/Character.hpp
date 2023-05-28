@@ -8,7 +8,7 @@ namespace ariel{
 
     class Character{
 
-        private:
+        // private:
         Point location;
         string name;
         int hits;

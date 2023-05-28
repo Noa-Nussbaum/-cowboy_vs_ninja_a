@@ -142,12 +142,11 @@ TEST_SUITE("Classes initialization tests and Team modification( add(),stillAlive
     TEST_CASE("Team initialization") {
         auto cowboy = create_cowboy(2, 3);
         auto ninja = create_yninja(2, 3);
-        // CHECK_EQ(cowboy->getInTeam(),0);
         Team team{cowboy};
-        // CHECK_EQ(team.stillAlive(), 1);
+        CHECK_EQ(team.stillAlive(), 1);
 
         Team2 team2{ninja};
-        // CHECK_EQ(team2.stillAlive(), 1);
+        CHECK_EQ(team2.stillAlive(), 1);
     }
 
     TEST_CASE("Team class add() and stillAlive() methods") {
@@ -278,7 +277,7 @@ TEST_SUITE("Battle related methods") {
         OldNinja old{"Bob", Point{random_float(0) + 15, random_float(0) + 15}};
         TrainedNinja trained{"Kung fu panda", Point{random_float(0) + 15, random_float(0) + 15}};
         YoungNinja young{"Karate kid", Point{random_float(0) + 15, random_float(0) + 15}};
-        Cowboy cowboy{"Clint", Point{0, 0}}; 
+        Cowboy cowboy{"Clint", Point{0, 0}};
 
         double old_distance = old.distance(&cowboy);
         double young_distance = young.distance(&cowboy);
@@ -440,7 +439,6 @@ TEST_SUITE("Battle simulations") {
                 attacker.attack(&defender);
             }
         }
-
     };
 
     TEST_CASE("Characters attack the closest enemy to the captain and ignore dead enemies ") {
@@ -457,15 +455,15 @@ TEST_SUITE("Battle simulations") {
         auto old_ninja = create_oninja(2, 2);
         auto young_ninja2 = create_yninja(3, 3);
         auto cowboy = create_cowboy(-6, -6);
-	auto cowboy2 = create_cowboy(-7, -7);
-	auto cowboy3 = create_cowboy(-8, -8);
+        auto cowboy2 = create_cowboy(-7, -7);
+        auto cowboy3 = create_cowboy(-8, -8);
         Team team2{young_ninja};
         team2.add(trained_ninja);
         team2.add(old_ninja);
         team2.add(young_ninja2);
         team2.add(cowboy);
-	team2.add(cowboy2);
-	team2.add(cowboy3);
+        team2.add(cowboy2);
+        team2.add(cowboy3);
 
         CHECK_EQ(team2.stillAlive(), 7);
 
@@ -517,10 +515,7 @@ TEST_SUITE("Battle simulations") {
         team2.add(team2_c3);
         team2.add(team2_c4);
 
-        
-
         multi_attack(4, team1, team2);
-        
 
         // The captain of team2 is the closest enemy to the captain of team1, and therefore should be dead.
         CHECK((!team2_c2->isAlive() && team2_c1->isAlive() && team2_c3->isAlive() && team2_c4->isAlive()));
@@ -546,6 +541,8 @@ TEST_SUITE("Battle simulations") {
             team1.attack(&team2);
             team2.attack(&team1);
         }
+
+
     }
 
 
