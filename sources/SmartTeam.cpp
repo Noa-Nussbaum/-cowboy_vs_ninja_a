@@ -1,4 +1,4 @@
-#include "Team2.hpp"
+#include "SmartTeam.hpp"
 #include "Character.hpp"
 #include <iostream>
 #include <limits>
@@ -8,10 +8,10 @@ using namespace std;
 
 namespace ariel{
 
-    Team2::Team2(Character* leader):Team(leader){
+    SmartTeam::SmartTeam(Character* leader):Team(leader){
     }
     
-    void Team2::add(Character* other){
+    void SmartTeam::add(Character* other){
         // Similar to regular team adding function but here we add as they come
         if(other->getInTeam()){
             throw runtime_error("Character was already in team");

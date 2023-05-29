@@ -22,8 +22,6 @@ class Point{
         double getY();
         bool operator==(const Point& other) const;
 
-
-
     private:
         double x;
         double y;

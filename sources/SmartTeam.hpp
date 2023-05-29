@@ -15,12 +15,12 @@ using namespace std;
 
 namespace ariel{
 
-    class Team2 : public Team{
+    class SmartTeam : public Team{
 
 
         public:
 
-            Team2(Character* leader);
+            SmartTeam(Character* leader);
             void add(Character* other) override;
 
             // The rest of the functions already exist in Team, as we are inheritting from it 
