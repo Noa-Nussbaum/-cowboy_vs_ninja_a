@@ -6,12 +6,9 @@ namespace ariel{
 
 
     Cowboy::Cowboy(const string &name, const Point &location):Character(name, 110,location),bullets(6){
+        // For my convenience
         setType(1);
     }
-    
-    // Cowboy::Cowboy(Cowboy& other):Character(other), bullets(other.bullets){
-    //     setType(1);
-    // }
     
     void Cowboy::shoot( Character* other){
         if(!this->isAlive() || !other->isAlive()){
@@ -42,9 +39,5 @@ namespace ariel{
         return "C Name: "+this->getName()+", Hits: "+std::to_string(this->getHits())+", Location: "+this->getLocation().printString();
 
     }
-
-   
-
-
 
 }

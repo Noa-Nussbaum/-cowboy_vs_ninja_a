@@ -13,6 +13,7 @@ namespace ariel{
     Point::Point(): x(0),y(0){}
 
     double Point::distance(const Point& other) const{
+        // Euclidean distance formula
         double distance = sqrt(pow(x-other.x,2)+pow(y-other.y,2));
         return distance;
     }
@@ -26,18 +27,22 @@ namespace ariel{
     }
 
     Point Point::moveTowards(Point source, Point destination, double distance){
+        // Lots of logic here
         if(distance<0){
             throw std::invalid_argument("Given distance is smaller than 0");
         }
+        // Find distance between source and destination
         double length = source.distance(destination);
-        if(length<=distance){
+
+        // If in the range then return it
+        if(length <= distance){
             return destination;
         }
-        double ratio = distance / length;
-        double dx = destination.getX() - source.getX();
-        double dy = destination.getY() - source.getY();
+        double relation = distance / length;
+        double x = destination.getX() - source.getX();
+        double y = destination.getY() - source.getY();
 
-        return Point(source.getX() + ratio * dx, source.getY() + ratio * dy);
+        return Point(source.getX() + relation * x, source.getY() + relation * y);
 
     }
     double Point::getX(){
@@ -48,6 +53,7 @@ namespace ariel{
         return this->y;
     }
     bool Point::operator==(const Point& other) const{
+        // Compare each component seperately
         return (x == other.x && y == other.y);
     }
 

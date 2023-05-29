@@ -8,7 +8,6 @@ namespace ariel{
 
     class Character{
 
-        // private:
         Point location;
         string name;
         int hits;
@@ -18,7 +17,6 @@ namespace ariel{
         public:
             Character(string name,int hits,Point location);
             Character(Character &other);
-            // Character();
             int getHits() const;
             void setLocation(Point other);
             Point getLocation() const;

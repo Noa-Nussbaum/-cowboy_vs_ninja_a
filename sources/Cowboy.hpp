@@ -6,7 +6,7 @@ using namespace std;
 namespace ariel{
 
     class Cowboy : public Character{
-    // private:
+    private:
         int bullets;
 
     public:
@@ -16,9 +16,7 @@ namespace ariel{
         bool hasboolets();
         void reload();
         string print();
-
-
-        
+ 
 
 };
 }
