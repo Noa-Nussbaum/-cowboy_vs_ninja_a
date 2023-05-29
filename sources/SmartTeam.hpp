@@ -22,7 +22,7 @@ namespace ariel{
 
             SmartTeam(Character* leader);
             void add(Character* other) override;
-            bool compare(Character *one, Character *two);
+            static bool compare(Character *one, Character *two);
 
 
             // The rest of the functions already exist in Team, as we are inheritting from it 
