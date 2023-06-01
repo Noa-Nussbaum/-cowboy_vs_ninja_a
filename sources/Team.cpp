@@ -79,7 +79,7 @@ namespace ariel{
         // If team leader is dead - replace them
         if (!leader->isAlive()){
             
-            leader = this->findVictim(this->leader);
+            leader = this->findNearest(this->leader);
             if(leader == nullptr){
                 return;
         }
