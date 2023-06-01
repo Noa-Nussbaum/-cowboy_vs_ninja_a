@@ -6,23 +6,11 @@ using namespace std;
 
 namespace ariel{
 
-    // Ninja::Ninja(string name, Point location) : Character(name, location){
-    //     // initialize any Ninja-specific member variables here
-    // }
-
-    // Ninja::Ninja(){
-    //     // initialize any Ninja-specific member variables here
-    // }
-
     Ninja::Ninja(const string &name, int hits,const Point &location, int speed):Character(name,hits,location), speed(speed){
+        // For my convenience
         setType(2);
-        
     }
     
-    // Ninja::Ninja(Ninja& other):Character(other), speed(other.speed){
-    //     setType(2);
-    // }
-
     void Ninja::move(Character* other){
         if(other->isAlive()){
             setLocation(getLocation().moveTowards(getLocation(),other->getLocation(),speed));
@@ -53,7 +41,6 @@ namespace ariel{
         return speed;
     }
 
-    
 
 }
 

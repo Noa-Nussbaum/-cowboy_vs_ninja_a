@@ -6,6 +6,7 @@ namespace ariel{
 
 
     Cowboy::Cowboy(const string &name, const Point &location):Character(name, 110,location),bullets(6){
+        // For my convenience
         setType(1);
     }
     
@@ -38,9 +39,5 @@ namespace ariel{
         return "C Name: "+this->getName()+", Hits: "+std::to_string(this->getHits())+", Location: "+this->getLocation().printString();
 
     }
-
-   
-
-
 
 }

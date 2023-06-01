@@ -19,9 +19,11 @@ namespace ariel{
 
 
         public:
+
             Team2(Character* leader);
             void add(Character* other) override;
 
+            // The rest of the functions already exist in Team, as we are inheritting from it 
 
     };
 

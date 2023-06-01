@@ -27,7 +27,8 @@ namespace ariel{
             void print();
             virtual ~Team();
             void setLeader(Character* newLeader);
-            Character* findVictim(const Character* leader) const ;
+            // Character* findVictim(const Team* other);
+            Character* findNearest(const Character* leader) const ;
             static bool compare(Character *one, Character *two);
             int teamSize();
             vector<Character *> &getTeam();
